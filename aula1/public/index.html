@@ -12,19 +12,27 @@
 <body>
   <h1>Meu primeiro servidor web</h1>
 
-  <select class="form-select" aria-label="Default select example">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
+  <button id="requestButton">Fazer a requisicao</button>
+  <div id="response"></div>
 
+  <script>
+    const requestButton = document.getElementById("requestButton");
+    const responseDiv = document.getElementById("response");
 
-  <div class="alert alert-primary" role="alert">
-    A simple primary alert—check it out!
-  </div>
+    requestButton.addEventListener('click', () => {
+      fetch('http://localhost:3000').then((response) => {
+        if (!response.ok) {
+          throw new Error('Que nao foi possivel');
+        }
 
-  <a href="http://localhost:3000">EU QUERO CHAMAR O SERVER1</a>
+        return response.text();
+      }).then(data => {
+        responseDiv.textContent = data;
+      }).catch(error => {
+        responseDiv.textContent = error.message;
+      })
+    });
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
