@@ -37,7 +37,7 @@ function autheticateToken2(req: Request, res: Response, next: NextFunction) {
   if (token === 'admin987') {
     next();
   } else {
-    res.status(401).json({ message: 'DEU RUIM' });
+    res.status(401).json({ message: 'DEU RUIM DEPLOY PROD' });
   }
 }
 
