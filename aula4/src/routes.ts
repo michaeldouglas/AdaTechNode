@@ -37,13 +37,16 @@ function autheticateToken2(req: Request, res: Response, next: NextFunction) {
   if (token === 'admin987') {
     next();
   } else {
-    res.status(401).json({ message: 'DEU RUIM' });
+    res.status(401).json({ message: 'DEU RUIM DEPLOY PROD' });
   }
 }
 
 router.use(autheticateToken);
 router.use(autheticateToken2);
 
+router.get('/teste', (req: Request, res: Response) => {
+  res.json({ teste: "dsadsadas" });
+});
 
 router.get('/todos', (req: Request, res: Response) => {
   res.json(todos);
