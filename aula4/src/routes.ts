@@ -44,6 +44,9 @@ function autheticateToken2(req: Request, res: Response, next: NextFunction) {
 router.use(autheticateToken);
 router.use(autheticateToken2);
 
+router.get('/teste', (req: Request, res: Response) => {
+  res.json({ teste: "dsadsadas" });
+});
 
 router.get('/todos', (req: Request, res: Response) => {
   res.json(todos);
