@@ -11,15 +11,36 @@ router.use(body_parser_1.default.json());
 const todos = [];
 // Auth 
 function autheticateToken(req, res, next) {
-    const token = req.header('Authorization');
-    if (token === 'admin123') {
+    var _a, _b;
+    const token = (_a = req.header('Authorization')) !== null && _a !== void 0 ? _a : false;
+    const token2 = (_b = req.header('Teste')) !== null && _b !== void 0 ? _b : false;
+    if (token === 'admin123' && token2 === 'admin654') {
         next();
     }
     else {
-        res.status(401).json({ message: 'Unauthorized' });
+        let messageReturned = '';
+        if (token === false)
+            messageReturned = 'Nao encontrei o Authorization';
+        if (token2 === false)
+            messageReturned = 'Nao encontrei o Teste';
+        res.status(401).json({ message: messageReturned });
+    }
+}
+function autheticateToken2(req, res, next) {
+    var _a;
+    const token = (_a = req.header('MAISUM')) !== null && _a !== void 0 ? _a : false;
+    if (token === 'admin987') {
+        next();
+    }
+    else {
+        res.status(401).json({ message: 'DEU RUIM DEPLOY PROD' });
     }
 }
 router.use(autheticateToken);
+router.use(autheticateToken2);
+router.get('/teste', (req, res) => {
+    res.json({ teste: "dsadsadas" });
+});
 router.get('/todos', (req, res) => {
     res.json(todos);
 });
