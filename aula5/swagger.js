@@ -6,7 +6,8 @@ const options = {
     info: {
       title: 'API de TODOS',
       version: '0.0.1',
-      description: 'É uma API de gerenciar TODOS'
+      description: 'É uma API de gerenciar TODOS',
+      license: 'Apache License 2.0',
     },
   },
   apis: ['./server.js'],

@@ -25,8 +25,8 @@ app.use('/playground', swaggerUi.serve, swaggerUi.setup(swaggerSpecs))
  *   get:
  *     summary: Obtém a lista de todos
  *     responses:
- *       200:
- *         description: Lista de todos obtida com sucesso
+ *       201:
+ *         description: Ola mundo
  *         content:
  *           application/json:
  *             examples:
