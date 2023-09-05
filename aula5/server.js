@@ -1,13 +1,12 @@
 // LIBS
 require('dotenv').config();
-const express = require('express');
-const BodyParser = require('body-parser');
-const swaggerUi = require('swagger-ui-express');
+import express from 'express';
+import BodyParser from 'body-parser';
+import swaggerUi from 'swagger-ui-express';
 
 // NOSSO
 const swaggerSpecs = require('./swagger');
 import OlaMundo from './teste';
-
 
 const { PORT } = process.env;
 
@@ -19,23 +18,6 @@ const todos = [];
 // DOCUMENTACAO DA NOSSA API
 app.use('/playground', swaggerUi.serve, swaggerUi.setup(swaggerSpecs))
 
-/**
- * @swagger
- * /todos:
- *   get:
- *     summary: Obtém a lista de todos
- *     responses:
- *       201:
- *         description: Ola mundo
- *         content:
- *           application/json:
- *             examples:
- *               todos:
- *                 value:
- *                   - id: 1
- *                     title: Comprar leite
- *                     completed: false
- */
 app.get('/todos', (req, res) => {
   res.json(todos);
 });
