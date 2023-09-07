@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 app.use('/playground', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 const todos = [];
+// PRIMEIRA COISA
+const todos2 = [];
 
 /**
  * @swagger
@@ -39,6 +41,37 @@ const todos = [];
 app.post('/todos', (req, res) => {
   const newTodo = req.body;
   todos.push(newTodo);
+  res.status(201).json(newTodo);
+});
+
+/**
+ * @swagger
+ * /todos2:
+ *   post:
+ *     summary: Adiciona um novo todo
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/TodoItem'
+ *           example:
+ *             id: 1
+ *             title: Comprar salame
+ *             completed: false
+ *     responses:
+ *       201:
+ *         description: Todo adicionado com sucesso
+ *         content:
+ *           application/json:
+ *             example:
+ *               id: 1,
+ *               title: Comprar salame
+ *               completed: false
+ */
+app.post('/todos2', (req, res) => {
+  const newTodo = req.body;
+  todos2.push(newTodo);
   res.status(201).json(newTodo);
 });
 
